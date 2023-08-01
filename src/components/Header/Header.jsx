@@ -6,6 +6,11 @@ import useOrderLists from '../hooks/useOrderLists'
 export default function Header() {
     const {user,logOut}=useAuth()
     const [refetch, orderlists]=useOrderLists()
+    let qunatityValue=0
+  for(let qunatityNum of orderlists){
+    qunatityValue+=qunatityNum.quantity
+  }
+
   return (
     <>
    <div className='bg-white'>
@@ -22,7 +27,7 @@ export default function Header() {
     </div>  
   <div>
      <FaShoppingCart className='text-4xl ms-2 text-white'/>
-     <h3 className='text-orange-600 text-3xl ms-5'>{orderlists.length}</h3>   
+     <h3 className='text-orange-600 text-3xl ms-5'>{qunatityValue}</h3>   
 </div>        
 </div>
 
