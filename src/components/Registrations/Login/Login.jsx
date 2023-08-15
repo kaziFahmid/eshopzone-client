@@ -28,9 +28,9 @@ let Login=()=> {
           });
         }
   return (
-    <div >
-      <div className="w-full max-w-sm mx-auto mt-6">
-  <form onSubmit={handleSubmit} className="bg-white shadow-lg rounded px-8 pt-6 pb-8 mb-4">
+    <div className='flex items-center justify-center h-screen'  >
+      <div className="w-full max-w-sm mx-auto  ">
+  <form onSubmit={handleSubmit} className="bg-white shadow-lg rounded px-8 pt-6 pb-8 ">
     <div className="mb-4">
       <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="email">
         Email

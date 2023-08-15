@@ -13,8 +13,13 @@ let Main =()=> {
       handleCategory }=useContext(FunctionProvider)
   return (
     <>
+    <div > 
     <Header/>
-   {isLoginOrSignupRoute&& <Outlet />}
+   {isLoginOrSignupRoute&& 
+   <div className='min-h-screen'> 
+    <Outlet />
+   </div>
+   }
     {!isLoginOrSignupRoute && (
         <div className='grid lg:grid-cols-12 grid-cols-1 '>
           <div className='col-span-2'>
@@ -31,8 +36,10 @@ let Main =()=> {
 
             </div>
           </div>
-          <div className='col-span-8 border-r-2 border-slate-200'>
+          <div className='col-span-8 border-r-2  border-slate-200'>
+         
             <Outlet />
+         
           </div>
           <div className='col-span-2  hidden lg:block'>
             <OrderSummary />
@@ -42,6 +49,7 @@ let Main =()=> {
 
 <Footer/>
       
+    </div>
     </>
   )
 }
