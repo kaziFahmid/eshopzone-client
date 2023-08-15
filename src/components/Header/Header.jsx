@@ -55,7 +55,7 @@ let handleLogout=()=>{
       <li><Link to='/'><span className=' text-white   hover:bg-slate-400  p-3'>Home</span></Link></li>
       <li><Link to='/products'><span className=' text-white   hover:bg-slate-400  p-3'>Products</span></Link></li>
     {user&&  <li><Link to='/revieworder'><span className='hover:bg-slate-500  text-white p-3  '>Review Order</span></Link></li>}
-       {user?.email ?<li><span className='hover:bg-slate-400  p-3  text-white  ' onClick={handleLogout}>Logout</span></li>: <li><Link to='/login'><span className=' text-white p-3  '>Login</span></Link></li>} 
+       {user?.email ?<li><span className='hover:bg-slate-400  p-3  text-white  ' onClick={handleLogout}>Logout</span></li>: <li><Link to='/login'><span className='hover:bg-slate-400 p-3  text-white  '>Login</span></Link></li>} 
          {!user?.email&&<li><Link to='/signup'><span className='hover:bg-slate-400 p-3  text-white  '>Signup</span></Link></li>}
          {user?.email&&<li className='text-white'>{user.email}</li>}
       </ul>
