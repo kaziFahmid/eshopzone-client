@@ -5,7 +5,7 @@ import { Link, useLocation, useNavigate } from 'react-router-dom'
 import Swal from 'sweetalert2';
 import useAuth from '../../hooks/useAuth';
 
-export default function Signup() {
+let Signup=()=> {
     const{createUser}=useAuth()
     let navigate = useNavigate()
     let location = useLocation();
@@ -70,7 +70,7 @@ createUser(email,password)
     <Link to='/login'>Login</Link>
   </div>
   <div className="flex items-center justify-center">
-    <button className="bg-yellow-300 hover:text-white  text-black px-12 hover:bg-yellow-600 py-2  rounded focus:outline-none focus:shadow-outline"  type="submit">
+    <button className="bg-yellow-300 hover:text-white border border-solid border-yellow-700  text-black px-12 hover:bg-yellow-600 py-2  rounded focus:outline-none focus:shadow-outline"  type="submit">
      Sign Up
     </button>
    
@@ -83,3 +83,4 @@ createUser(email,password)
   </div>
   )
 }
+export default Signup

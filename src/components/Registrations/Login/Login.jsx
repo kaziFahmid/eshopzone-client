@@ -3,7 +3,7 @@ import { Link, useLocation, useNavigate } from 'react-router-dom'
 import useAuth from '../../hooks/useAuth'
 import Swal from 'sweetalert2'
 
-export default function Login() {
+let Login=()=> {
     const{signInUser}=useAuth()
     let navigate = useNavigate()
     let location = useLocation();
@@ -46,7 +46,7 @@ export default function Login() {
     </div>
 
     <div className="flex items-center justify-center">
-      <button className="bg-yellow-300 hover:text-white  text-black px-12 hover:bg-yellow-600 py-2  rounded focus:outline-none focus:shadow-outline" type="submit">
+      <button className="bg-yellow-300 hover:text-white border border-solid border-yellow-700  text-black px-12 hover:bg-yellow-600 py-2  rounded focus:outline-none focus:shadow-outline" type="submit">
        Log In
       </button>
 
@@ -59,3 +59,4 @@ export default function Login() {
     </div>
   )
 }
+export default Login

@@ -7,7 +7,7 @@ import useAuth from '../hooks/useAuth';
 
 
 
-export default function PrivateRoute({children}) {
+let PrivateRoute=({children})=> {
   const {user,loading}=useAuth()
 
 let location = useLocation();
@@ -20,3 +20,5 @@ if(user){
 }
   return <Navigate to='/login' state={{ from: location }} replace></Navigate>
 }
+
+export default PrivateRoute
