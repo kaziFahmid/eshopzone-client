@@ -47,7 +47,7 @@ createUser(email,password)
 
     }
   return (
-    <div className='flex items-center justify-center h-screen' >
+    <div className='flex items-center justify-center min-h-screen' >
     <div className="w-full max-w-sm mx-auto  ">
 <form  onSubmit={handleSubmit} className="bg-white shadow-lg rounded px-8 pt-6 pb-8 mb-4">
 <div className="mb-4">
