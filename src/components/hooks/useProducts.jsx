@@ -10,7 +10,7 @@ let useProducts=() =>{
     const { refetch, data: products = [] } = useQuery({
         queryKey: ['products',searchValue,categoryValue],
         queryFn: async () => {
-          const res = await fetch(`http://localhost:5000/products?search=${searchValue}&category=${categoryValue}`)
+          const res = await fetch(`https://eshopzone-server.vercel.app/products?search=${searchValue}&category=${categoryValue}`)
           return res.json()
         },
       })

@@ -18,8 +18,9 @@ import AuthProvider from './components/AuthProvider/AuthProvider';
 import ReviewOrder from './components/ReviewOrder/ReviewOrder';
 import Functions from './components/Functions/Functions';
 import Products from './components/Products/Products';
+import PlaceOrder from './components/PlaceOrder/PlaceOrder';
 
-axios.defaults.baseURL=`http://localhost:5000/`
+axios.defaults.baseURL=`https://eshopzone-server.vercel.app/`
 axios.interceptors.request.use((req)=>{return req})
 axios.interceptors.response.use((res)=>{return res.data})
 
@@ -48,6 +49,10 @@ const router = createBrowserRouter([
         {
           path:'/revieworder',
           element:<ReviewOrder/>
+        },
+        {
+          path:'/placeorder',
+          element:<PlaceOrder/>
         }
     ]
   },

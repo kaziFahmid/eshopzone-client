@@ -16,15 +16,18 @@ let ProductCard=({_id,image,
             axios.post('/orderlists',product)
             .then(res=>{
               if(res.modifiedCount>0||res.insertedId){
+                
                 refetch()
               }
             })
 
         }
 
+    
   return (
     <div className=" border-b-2 bg-white border-slate-400 justify-center items-center gap-5  grid grid-cols-1 py-5 lg:grid-cols-12 px-6">
     {/* Car Image */}
+
       <div className='lg:col-span-4'> 
 
  <div> 
@@ -55,7 +58,9 @@ let ProductCard=({_id,image,
 <p className='text-xs mt-3'>{description}</p>
 <div> 
 
-  {!user?<Link to='/login'><button className='text-black bg-yellow-300 hover:text-white text-xs  py-2 rounded-md px-11 mt-4 flex justify-center items-center gap-1 border border-solid border-yellow-700'><BsFillCartFill/>Add To Cart</button></Link>:<button onClick={()=>{handleAddToCart({
+  {!user?<Link to='/login'><button className='text-black bg-yellow-300 hover:text-white text-xs  py-2 rounded-md px-11 mt-4 flex justify-center items-center gap-1 border border-solid border-yellow-700'><BsFillCartFill/>Add To Cart</button></Link>:<button
+ 
+  onClick={()=>{handleAddToCart({
           productId: _id, 
           image,
           title,
@@ -63,7 +68,7 @@ let ProductCard=({_id,image,
           price,
           email: user?.email,
           description,
-        })}} className='text-black bg-yellow-300 hover:text-white text-xs  py-2 rounded-md px-11 mt-4 flex justify-center items-center gap-1 border border-solid border-yellow-700'><BsFillCartFill/>Add To Cart</button>}
+        })}}  className='text-black bg-yellow-300 hover:text-white text-xs  py-2 rounded-md px-11 mt-4 flex justify-center items-center gap-1 border border-solid border-yellow-700' ><BsFillCartFill/>Add To Cart</button>}
 
 </div>
 

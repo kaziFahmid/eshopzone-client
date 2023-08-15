@@ -1,24 +1,28 @@
 import React, { useContext, useState } from 'react'
 import { FaShoppingCart } from 'react-icons/fa'
 import { FaSearch } from 'react-icons/fa'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import useAuth from '../hooks/useAuth'
 import useOrderLists from '../hooks/useOrderLists'
 import { FunctionProvider } from '../Functions/Functions'
 import { GiHamburgerMenu } from 'react-icons/gi'
 import { ImCross } from 'react-icons/im'
+
 let Header=()=> {
     const {user,logOut}=useAuth()
  const[isTrue,setIsTrue]=useState(false)
     const [refetch, orderlists]=useOrderLists()
     const{ searchValue,
       handleSearch}=useContext(FunctionProvider)
-
+const navigate=useNavigate()
     let qunatityValue=0
   for(let qunatityNum of orderlists){
     qunatityValue+=qunatityNum.quantity
   }
-
+let handleLogout=()=>{
+  logOut()
+  navigate('/login')
+}
 
 
   return (
@@ -51,8 +55,9 @@ let Header=()=> {
       <li><Link to='/'><span className=' text-white   hover:bg-slate-400  p-3'>Home</span></Link></li>
       <li><Link to='/products'><span className=' text-white   hover:bg-slate-400  p-3'>Products</span></Link></li>
     {user&&  <li><Link to='/revieworder'><span className='hover:bg-slate-500  text-white p-3  '>Review Order</span></Link></li>}
-       {user?.email ?<li><span className='hover:bg-slate-400  p-3  text-white  ' onClick={logOut}>Logout</span></li>: <li><Link to='/login'><span className=' text-white p-3  '>Login</span></Link></li>} 
+       {user?.email ?<li><span className='hover:bg-slate-400  p-3  text-white  ' onClick={handleLogout}>Logout</span></li>: <li><Link to='/login'><span className=' text-white p-3  '>Login</span></Link></li>} 
          {!user?.email&&<li><Link to='/signup'><span className='hover:bg-slate-400 p-3  text-white  '>Signup</span></Link></li>}
+         {user?.email&&<li className='text-white'>{user.email}</li>}
       </ul>
      </div>
   </nav>

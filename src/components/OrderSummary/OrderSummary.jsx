@@ -2,16 +2,18 @@ import React, { useState } from 'react'
 import useOrderLists from '../hooks/useOrderLists'
 import { Link, useLocation } from 'react-router-dom'
 import { useQuery } from '@tanstack/react-query';
+import useAuth from '../hooks/useAuth';
+import axios from 'axios';
 
 
  let OrderSummary =()=> {
   const location = useLocation();
-  let [localStorageProducts,setLocalStorageProducts]=useState( JSON.parse(localStorage.getItem('products'))||[])
+const{user}=useAuth()
 
   const { data: products = [] } = useQuery({
     queryKey: ['products'],
     queryFn: async () => {
-      const res = await fetch(`http://localhost:5000/products`)
+      const res = await fetch(`https://eshopzone-server.vercel.app/products`)
       return res.json()
     },
   })
@@ -28,7 +30,14 @@ let isLocationPath=location.pathname === '/revieworder'
   for(let qunatityNum of orderlists){
     qunatityValue+=qunatityNum.quantity
   }
-
+let handleDelete=()=>{
+  axios.delete('/orderlists')
+  .then((res)=>{
+    if(res.deletedCount>0){
+      refetch()
+    }
+  })
+}
 
   
   return (
@@ -42,7 +51,7 @@ let isLocationPath=location.pathname === '/revieworder'
         <li className='text-lg font-semibold text-orange-700' >Order Summary: ${orderlists.length===0&&'0'||`${Math.ceil(totalItemsPrice+shippingCharge+totalItemsPrice*7/100)}`}</li>
       </ul>
     <div className='flex justify-center'>
- <Link to='/revieworder'>{isLocationPath? <button className='text-black bg-yellow-300 hover:text-white text-xs  py-2 rounded-md px-11 mt-4 flex justify-center items-center gap-1 border border-solid border-yellow-700'>Place Order</button>: <button className='text-black bg-yellow-300 hover:text-white text-xs  py-2 rounded-md px-11 mt-4 flex justify-center items-center gap-1 border border-solid border-yellow-700'>Review Order</button>}  </Link>
+{isLocationPath? <Link to={`${!user?'/login':'/placeorder'}`}><button className='text-black bg-yellow-300 hover:text-white text-xs  py-2 rounded-md px-11 mt-4 flex justify-center items-center gap-1 border border-solid border-yellow-700'onClick={handleDelete} disabled={orderlists.length===0&&true}>Place Order</button> </Link>: <Link to={`${!user?'/login':'/revieworder'}`}><button className='text-black bg-yellow-300 hover:text-white text-xs  py-2 rounded-md px-11 mt-4 flex justify-center items-center gap-1 border border-solid border-yellow-700'>Review Order</button> </Link>} 
 
     </div>
     </div>
