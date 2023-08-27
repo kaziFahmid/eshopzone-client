@@ -1,30 +1,15 @@
-import React, { useEffect, useState } from 'react'
-import Banner from './Banner/Banner'
-import axios from 'axios'
+import React from 'react'
 import useProducts from '../hooks/useProducts'
 import { Link } from 'react-router-dom'
-import OurNews from '../OurNews/OurNews'
-import ElectronicsProducts from '../ElectronicsProducts/ElectronicsProducts'
-import Question from '../Question/Question'
-import Subscribe from '../Subscribe/Subscribe'
-import Testimonial from '../Testimonial/Testimonial'
 
-let Home=()=> {
-  const[refetch, products]=useProducts()
+const ElectronicsProducts = () => {
+    const[refetch, products]=useProducts()
+    console.log(products)
   return (
     <>
-<div className='banner-area ' >
-
-  <Banner/>
-
-
-
-
-</div>
-
-
-<div className='grid  mt-9   lg:grid-cols-3 md:grid-cols-2 grid-cols-1 max-w-6xl mx-auto gap-9'>
-{products.map((card,index)=> <div key={index} className="relative m-10 mx-auto flex w-full  flex-col overflow-hidden rounded-lg border border-gray-100 bg-white shadow-md h-96">
+    <h1 className='text-center font-semibold text-4xl mt-32'>Best Electronic Products</h1>
+    <section className=' mt-10 grid lg:grid-cols-3 md:grid-cols-2 gap-7 max-w-6xl mx-auto'>
+    {products.filter((x)=>x.category==='electronics').map((card,index)=> <div key={index} className="relative m-10 mx-auto flex w-full  flex-col overflow-hidden rounded-lg border border-gray-100 bg-white shadow-md h-96">
   <a className="relative mx-3 mt-3 flex h-60 overflow-hidden rounded-xl" href="#">
     <img className=" w-full object-contain" src={card.image} />
     <span className="absolute top-0 left-0 m-2 rounded-full bg-black px-2 text-center text-sm font-medium text-white">39% OFF</span>
@@ -73,57 +58,10 @@ let Home=()=> {
 
 
 )}
-</div>
-
-<section className='mt-28'>
-  <div className='ms-14'>
-    <span className='text-md'>Featured</span>
-    <h2 className='text-5xl font-semibold'>New Arrival</h2>
-  </div>
-
-  <div className='grid lg:grid-cols-2 gap-11 grid-cols-1 mt-9 max-w-6xl mx-auto '>
-    <div className=' bg-cover bg-center bg-no-repeat  bg-[url(https://i.ibb.co/bWL2yNC/Frame-684.png)] pt-96 px-12 pb-24 '>
-      <div className='text-white'>
-      <h3>PlayStation 5</h3>
-  <p>Black and White version of the PS5 coming out on sale.</p>
-      </div>
-<div>
- 
-</div>
-    </div>
-
-
-    <div >
-    <div className=' bg-cover bg-center bg-no-repeat  bg-[url(https://i.ibb.co/bWL2yNC/Frame-684.png)] pt-96 px-12 pb-24 '>
-      <div className='text-white'>
-      <h3>PlayStation 5</h3>
-  <p>Black and White version of the PS5 coming out on sale.</p>
-      </div>
-<div>
- 
-</div>
-    </div>
-
+    </section>
       
-      
-    </div>
-
-
-
-
-
-  </div>
-
-
-
-</section>
-
-<OurNews/>
-<ElectronicsProducts/>
-<Question/>
-<Subscribe/>
-<Testimonial/>
     </>
   )
 }
-export default Home
+
+export default ElectronicsProducts

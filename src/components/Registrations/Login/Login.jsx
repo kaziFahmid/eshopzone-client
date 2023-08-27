@@ -2,7 +2,8 @@ import React from 'react'
 import { Link, useLocation, useNavigate } from 'react-router-dom'
 import useAuth from '../../hooks/useAuth'
 import Swal from 'sweetalert2'
-
+import data from './data.json' 
+import Lottie from 'react-lottie'
 let Login=()=> {
     const{signInUser}=useAuth()
     let navigate = useNavigate()
@@ -27,8 +28,25 @@ let Login=()=> {
             const errorMessage = error.message;
           });
         }
+
+
+        const defaultOptions = {
+          loop: true,
+          autoplay: true, 
+          animationData: data,
+          rendererSettings: {
+            preserveAspectRatio: 'xMidYMid slice'
+          }
+        };
+
+
+
+
+
+
   return (
-    <div className='flex items-center justify-center min-h-screen'  >
+    <>
+    <div className='flex mt-28 lg:mt-0 lg:flex-row flex-col items-center justify-around min-h-screen'  >
       <div className="w-full max-w-sm mx-auto  ">
   <form onSubmit={handleSubmit} className="bg-white shadow-lg rounded px-8 pt-6 pb-8 ">
     <div className="mb-4">
@@ -56,7 +74,27 @@ let Login=()=> {
     &copy;2020 Acme Corp. All rights reserved.
   </p>
 </div>
+
+<div>
+<Lottie options={defaultOptions}
+       
+         
+           />
+</div>
     </div>
+    
+    
+    
+   
+    
+    
+    
+    
+    
+    
+    
+    
+    </>
   )
 }
 export default Login

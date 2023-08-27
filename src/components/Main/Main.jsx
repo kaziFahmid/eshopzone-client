@@ -8,7 +8,7 @@ import Footer from '../Footer/Footer'
 
 let Main =()=> {
     const location = useLocation();
-    const isLoginOrSignupRoute = location.pathname === '/login' || location.pathname === '/signup'|| location.pathname === '/revieworder'||location.pathname === '/'||location.pathname==='/placeorder';
+    const isLoginOrSignupRoute = location.pathname === '/login' || location.pathname === '/signup'|| location.pathname === '/revieworder'||location.pathname === '/'||location.pathname==='/placeorder'||location.pathname==='/contactus';
     const{
       handleCategory }=useContext(FunctionProvider)
   return (
